@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Hero pilot WebP encoder</title>
+<style>
+  body { font: 16px system-ui, sans-serif; margin: 2rem; color: #10213c; }
+  button { margin: .5rem .5rem .5rem 0; padding: .7rem 1rem; }
+  #status { white-space: pre-wrap; }
+</style>
+<h1>Hero pilot WebP encoder</h1>
+<p id="status">Loading master…</p>
+<button id="desktop" disabled>Download desktop WebP</button>
+<button id="mobile" disabled>Download mobile WebP</button>
+<script>
+  (function () {
+    'use strict';
+    var masterPath = '../assets/photos/derivatives/club-own/interior/hero-pilot-6329/hero-6329-master-natural-v2.png';
+    var image = new Image();
+    var status = document.getElementById('status');
+    var jobs = {
+      desktop: { crop: [0, 180, 4032, 2268], size: [2560, 1440], filename: 'hero-6329-desktop-2560x1440.webp' },
+      mobile: { crop: [1450, 0, 1701, 3024], size: [1440, 2560], filename: 'hero-6329-mobile-1440x2560.webp' }
+    };
+
+    function encode(kind) {
+      var job = jobs[kind];
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d', { alpha: false });
+      canvas.width = job.size[0];
+      canvas.height = job.size[1];
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = 'high';
+      context.drawImage(image, job.crop[0], job.crop[1], job.crop[2], job.crop[3], 0, 0, job.size[0], job.size[1]);
+      canvas.toBlob(function (blob) {
+        if (!blob || blob.type !== 'image/webp') {
+          status.textContent = 'This browser cannot encode WebP.';
+          return;
+        }
+        var link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = job.filename;
+        link.click();
+        status.textContent = kind + ': ' + job.size.join('×') + ' WebP downloaded (' + Math.round(blob.size / 1024) + ' KiB).';
+        setTimeout(function () { URL.revokeObjectURL(link.href); }, 1000);
+      }, 'image/webp', 0.86);
+    }
+
+    image.onload = function () {
+      status.textContent = 'Master ready: ' + image.naturalWidth + '×' + image.naturalHeight + '. Choose one export at a time.';
+      document.getElementById('desktop').disabled = false;
+      document.getElementById('mobile').disabled = false;
+    };
+    image.onerror = function () { status.textContent = 'The master could not be loaded.'; };
+    document.getElementById('desktop').addEventListener('click', function () { encode('desktop'); });
+    document.getElementById('mobile').addEventListener('click', function () { encode('mobile'); });
+    image.src = masterPath;
+  }());
+</script>

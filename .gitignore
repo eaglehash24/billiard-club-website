@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+._*
+
+# Diagnostic artifacts
+*.invalid-extension.jpeg
+
+# Original photos - keep locally
+assets/photos/originals/
+
+# Heavy source images and previews - keep locally
+assets/photos/derivatives/club-own/interior/hero-pilot-6329/hero-6329-master-natural-v2.png
+assets/photos/derivatives/club-own/interior/hero-pilot-6329/previews/
+
+# Unused large PNG concepts
+assets/client-first-hero.png
+assets/client-first-tables.png
+
+# Original hero image - keep locally
+assets/client-first-hero-green.png

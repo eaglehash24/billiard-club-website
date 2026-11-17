@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Billiard City — read-only dashboard</title>
+  <link rel="stylesheet" href="admin.css?v=stage1-reliability">
+</head>
+<body>
+  <header class="admin-header">
+    <a href="../" class="admin-brand">BILLIARD CITY<span>·</span> <small>read-only</small></a>
+    <p>Демонстрационная панель расписания</p>
+  </header>
+  <main>
+    <section class="admin-intro">
+      <p class="eyebrow">Внутренний обзор</p>
+      <h1>Расписание<br>без правок.</h1>
+      <p>Эта панель показывает тот же локальный источник, что и клиентское бронирование. Здесь нельзя создавать, изменять или отменять брони; телефонные брони и гости без записи в прототип не добавляются.</p>
+      <p class="warning">Для реального запуска нужна серверная авторизация, роли сотрудников и защищённая база данных.</p>
+    </section>
+    <section class="dashboard" aria-live="polite">
+      <div class="dashboard-bar">
+        <div><p class="eyebrow">13 столов</p><h2>Текущий статус</h2></div>
+        <label>Дата просмотра<input type="date" id="admin-day"></label>
+      </div>
+      <div id="admin-stats" class="admin-stats"></div>
+      <div id="admin-schedule" class="admin-schedule"></div>
+    </section>
+    <section class="future-section">
+      <div><p class="eyebrow">Будущие записи</p><h2>Кому и когда</h2></div>
+      <div id="future-bookings" class="future-bookings"></div>
+    </section>
+    <section class="food-section">
+      <p class="eyebrow">Еда · зарезервировано для будущего</p>
+      <h2>Предзаказы пока<br>не принимаются.</h2>
+      <div id="food-list" class="food-list"></div>
+    </section>
+  </main>
+  <footer><a href="../">← Вернуться к клиентской версии</a><span>Локальные данные одного браузера · ДЕМО</span></footer>
+  <script src="../domain.js?v=stage1-reliability"></script>
+  <script src="admin.js?v=stage1-reliability"></script>
+</body>
+</html>

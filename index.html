@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Демонстраційна версія самостійного бронювання більярдного столу.">
+  <title>Billiard City — забронювати стіл</title>
+  <link rel="stylesheet" href="styles.css?v=site-calendar-20261117b">
+</head>
+<body>
+  <header class="topbar" aria-label="Навигация">
+    <div class="topbar-actions">
+      <div class="language-switcher" data-language-switcher>
+        <button type="button" class="language-trigger" data-language-toggle aria-haspopup="menu" aria-expanded="false" aria-controls="language-menu">
+          <span class="language-flag" aria-hidden="true" data-language-flag>🇺🇦</span>
+          <span data-language-current>UK</span>
+          <span class="language-chevron" aria-hidden="true">⌄</span>
+        </button>
+        <div class="language-menu" id="language-menu" role="menu" aria-label="Мова сайту" hidden>
+          <button type="button" class="language-choice" role="menuitemradio" data-language-choice="uk" aria-checked="true"><span aria-hidden="true">🇺🇦</span> UK</button>
+          <button type="button" class="language-choice" role="menuitemradio" data-language-choice="ru" aria-checked="false"><span aria-hidden="true">🇷🇺</span> RU</button>
+          <button type="button" class="language-choice" role="menuitemradio" data-language-choice="en" aria-checked="false"><span aria-hidden="true">🇬🇧</span> EN</button>
+        </div>
+      </div>
+      <button type="button" class="account-link" data-account-open data-i18n="account">Кабінет</button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="home-screen" aria-labelledby="home-title">
+      <picture>
+        <source media="(max-width: 599px)" srcset="assets/photos/web/mobile/fon_apple.webp">
+        <img class="home-photo" src="assets/client-first-hero-green.webp" alt="Стіл для американського пулу в сучасному більярдному клубі" data-i18n-alt="heroPhotoAlt" data-hero-pilot-desktop="assets/photos/derivatives/club-own/interior/hero-pilot-6329/webp/hero-6329-desktop-2560x1440.webp" data-hero-pilot-mobile="assets/photos/derivatives/club-own/interior/hero-pilot-6329/webp/hero-6329-mobile-1440x2560.webp">
+      </picture>
+      <div class="home-shade"></div>
+      <div class="home-content">
+        <h1 id="home-title" data-i18n-html="homeTitle">БІЛЬЯРД СІТІ</h1>
+        <button class="hero-book-button" type="button" data-start-booking><span class="hero-book-label" data-i18n="bookTable">Забронювати стіл</span><span class="hero-book-arrow" aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="booking-wizard" id="booking-wizard" aria-label="Бронювання" data-i18n-aria="booking" aria-hidden="true">
+    <div id="wizard-app"></div>
+  </section>
+
+  <aside class="account-panel" id="account-panel" aria-label="Особистий кабінет" data-i18n-aria="account" aria-hidden="true">
+    <div class="account-backdrop" data-account-close></div>
+    <div class="account-sheet" role="dialog" aria-modal="true" aria-labelledby="account-title">
+      <div class="sheet-head"><p data-i18n="account">Особистий кабінет</p><button type="button" data-account-close aria-label="Закрити кабінет" data-i18n-aria="closeAccount">×</button></div>
+      <h2 id="account-title" data-i18n-html="yourBookings">Ваші<br>бронювання</h2>
+      <div id="account-content"></div>
+      <p class="account-note" data-i18n="accountNote">ДЕМО: програму лояльності не підключено, реальні бонуси не нараховуються.</p>
+    </div>
+  </aside>
+
+  <script src="domain.js?v=mobile-calendar-20261116"></script>
+  <script src="app.js?v=site-calendar-20261117b"></script>
+</body>
+</html>
